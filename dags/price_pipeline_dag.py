@@ -1,19 +1,29 @@
 from airflow import DAG
 from airflow.operators.python import PythonOperator
-from datetime import datetime
+from datetime import datetime, timedelta
 import sys, os
 
 sys.path.append(os.path.abspath("src"))
 
 from extract.amazon_scraper import scrape_amazon
-from transform.clean_merge_prices import *
-from analytics.price_recommendation import *
+from extract.flipkart_scraper import scrape_flipkart
+from extract.myntra_scraper import scrape_myntra
+from transform.clean_merge_prices import run as transform_run
+from analytics.price_recommendation import run as recommend_run
 
-default_args = {"start_date": datetime(2025, 11, 1), "retries": 1}
-dag = DAG("price_pipeline", default_args=default_args, schedule_interval="@daily")
+default_args = {
+    "owner": "airflow",
+    "depends_on_past": False,
+    "start_date": datetime(2025, 1, 1),
+    "retries": 1,
+    "retry_delay": timedelta(minutes=5),
+}
 
-extract = PythonOperator(task_id="extract", python_callable=scrape_amazon, dag=dag)
-transform = PythonOperator(task_id="transform", python_callable=lambda: os.system("python src/transform/clean_merge_prices.py"), dag=dag)
-recommend = PythonOperator(task_id="recommend", python_callable=lambda: os.system("python src/analytics/price_recommendation.py"), dag=dag)
+with DAG("price_pipeline", default_args=default_args, schedule_interval="@daily", catchup=False) as dag:
+    t1 = PythonOperator(task_id="extract_amazon", python_callable=scrape_amazon)
+    t2 = PythonOperator(task_id="extract_flipkart", python_callable=scrape_flipkart)
+    t3 = PythonOperator(task_id="extract_myntra", python_callable=scrape_myntra)
+    t4 = PythonOperator(task_id="transform", python_callable=transform_run)
+    t5 = PythonOperator(task_id="recommend", python_callable=recommend_run)
 
-extract >> transform >> recommend
+    [t1, t2, t3] >> t4 >> t5
