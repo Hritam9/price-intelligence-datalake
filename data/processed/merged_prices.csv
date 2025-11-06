@@ -1,4 +1,4 @@
-product_name,price,currency,avg_price
-Sports Shoes,1549.33,INR,1549.33
-Running T-Shirt,724.67,INR,724.67
-Backpack,1582.33,INR,1582.33
+product_name,avg_price,currency
+Sports Shoes,1549.67,INR
+Running T-Shirt,724.67,INR
+Backpack,1582.67,INR
