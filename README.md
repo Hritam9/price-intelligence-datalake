@@ -39,7 +39,7 @@ This pipeline helps businesses identify optimal product prices based on competit
 ## 🧮 Example Dashboard
 
 <p align="center">
-  <img src="docs/dashboard-sample.png" width="650">
+  <img src="docs/price_intelligence_report.png" width="650">
 </p>
 
 > *Streamlit app displaying competitor vs recommended pricing.*
