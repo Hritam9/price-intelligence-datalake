@@ -9,6 +9,7 @@ This pipeline helps businesses identify optimal product prices based on competit
 
 ## 🧩 Architecture Overview
 
+
 <p align="center">
   <img src="docs/architecture.png" width="650">
 </p>
