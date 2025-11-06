@@ -1,8 +1,9 @@
-pandas
+pandas>=1.5
 numpy
 requests
 beautifulsoup4
 streamlit
 scikit-learn
 azure-storage-blob
-apache-airflow
+apache-airflow  # optional for DAG execution
+matplotlib
