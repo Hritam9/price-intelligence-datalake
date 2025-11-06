@@ -1,0 +1,4 @@
+product_id,product_name,price,currency,source,timestamp
+1,Sports Shoes,1550,INR,Flipkart,2025-11-06
+2,Running T-Shirt,750,INR,Flipkart,2025-11-06
+3,Backpack,1499,INR,Flipkart,2025-11-06
