@@ -1,11 +1,10 @@
-# Python cache
+# Python
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
-*.pdb
 
-# Environment files
+# Virtual envs and secrets
 .env
 *.env
 venv/
@@ -20,7 +19,9 @@ data/processed/*.csv
 .vscode/
 .idea/
 
-# Streamlit and Airflow logs
+# Logs
 logs/
 airflow/logs/
-dashboard/__pycache__/
+
+# Images
+docs/*.png
