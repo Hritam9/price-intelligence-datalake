@@ -1,0 +1,26 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+
+# Environment files
+.env
+*.env
+venv/
+.venv/
+
+# Data
+data/raw/*.csv
+!data/raw/sample_*.csv
+data/processed/*.csv
+
+# IDE
+.vscode/
+.idea/
+
+# Streamlit and Airflow logs
+logs/
+airflow/logs/
+dashboard/__pycache__/
